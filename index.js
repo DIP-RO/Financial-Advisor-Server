@@ -147,12 +147,7 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
-    app.get("/team", async (req, res) => {
-      const query = {};
-      const cursor = teamCollection.find(query);
-      const result = await cursor.toArray();
-      res.send(result);
-    });
+    
     app.get("/advisor", async (req, res) => {
       const query = {};
       const cursor = advisorCollection.find(query);
