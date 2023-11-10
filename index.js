@@ -105,14 +105,14 @@ async function run() {
       }
     });
 
-    app.get("/user", verifyJWT, verifyAdmin, async (req, res) => {
+    app.get("/user",  async (req, res) => {
       const query = {};
       const result = await usersCollection.find(query).toArray();
       res.send(result);
     });
 
     // ------ Admin API =--------
-    app.put("/user/admin/:id", verifyJWT, async (req, res) => {
+    app.put("/user/admin/:id",  async (req, res) => {
       const decodedEmail = req.decoded.email;
       const query = { email: decodedEmail };
       const user = await usersCollection.findOne(query);
@@ -168,7 +168,7 @@ async function run() {
     //------------ Admin API's--------------
 
     // create room
-    app.post("/service", verifyJWT, verifyAdmin, async (req, res) => {
+    app.post("/service",  async (req, res) => {
       const room = req.body;
 
       const result = await serviceCollection.insertOne(room);
